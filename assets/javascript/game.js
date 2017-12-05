@@ -36,39 +36,60 @@
   //after each time the user plays a letter, the counter for 'number of guesses remaining' will decrease by 1
 
 
-
-///////////////////////////////////////////////////////////
-
 //create an array of beeWords
-var beeWords = ["queen", "worker", "drone", "pollination", "beyonce", "swarm", "metamorphosis", "royaljelly"];
+  var beeWords = ["queen", "worker", "drone", "pollination", "beyonce", "swarm", "metamorphosis", "royaljelly"];
 
-//choose word randomly
-var randomNum = Math.floor(Math.random() * beeWords.length);
-var randomWord = beeWords[randomNum];
-// empty array for underscores
-var underScore = [];
-console.log(randomWord);
+/////choose word randomly
+  var randomNum = Math.floor(Math.random() * beeWords.length);
+  var randomWord = beeWords[randomNum].toUpperCase();
+  var rightWord = [];
+  var wrongWord = [];
+  var underScore = []; // empty array for underscores
 
-//create underscores based on length of random word that we generated
-function makeUnderscore() {
-  for (var i = 0; i < randomWord.length; i++) {
-    underScore.push("_");
+console.log(randomWord); //to test randomWord var
+
+/////create underscores based on length of random word that we generated
+  function makeUnderscore() {
+    for (var i = 0; i < randomWord.length; i++) {
+      underScore.push("_");
+    }
+    return underScore;
   }
-  return underScore;
-}
 
-console.log(makeUnderscore());
+console.log(makeUnderscore()); // testing
 
-//get users guess
-document.addEventListener('keyup', (function event() {
-  //console.log(event);
-  //converts unicode key value into a character
-  var userKeyInput = event.keyCode;
-  console.log(userKeyInput);
+/////get users guess
+  document.addEventListener('keyup', (function (event) {
+  //converts unicode key value into a string
+    var userKeyInput = String.fromCharCode(event.keyCode);
+    console.log(userKeyInput);
+
+  // if users guess is right
+    if (randomWord.indexOf(userKeyInput) > -1) {
+    //add to rightWord array
+      rightWord.push(userKeyInput);
+    //replace underscore with right letter
+      underScore[randomWord.indexOf(userKeyInput)] = userKeyInput;
+
+      if (underScore.join('') == randomWord) {
+        console.log(rightWord);
+        //console.log('you win');
+        //need to figure out how to make repeated letter show up and be logged with one keypress
+        alert('you win');
+      }
+
+      // wrongWord.push(userKeyInput);
+    }
+
 }));
 
+//console.log(userKeyInput.indexOf(randomWord));
+  //console.log(rightWord);
+  //console.log(wrongWord);
 
   //store user's input
+
+
   //check if right
   //if right display in blank space
   //if wrong, display in 'letters guessed'
