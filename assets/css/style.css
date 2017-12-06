@@ -1,0 +1,55 @@
+body {
+  background-color: #FAF7EF;
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-size: 5em;
+  padding-bottom: 0.5em;
+  padding-top: 0.3em;
+  text-align: center;
+}
+
+h3 {
+  font-size: 6em;
+}
+
+
+img {
+  height: 19em;
+  margin-left: 18em;
+  float: left;
+}
+
+#game-box {
+  border: 2px solid black;
+  width: 20em;
+  float: left;
+  margin-left: 3em;
+}
+
+#underscores {
+  margin: 2em;
+  text-align: center;
+}
+
+#correct-guesses {
+  margin: 1em;
+  margin-top: 3em;
+  text-align: center;
+}
+
+#wrong-guesses {
+  margin: 2em;
+  text-align: center;
+}
+
+#guesses-remaining {
+  margin: 2em;
+  text-align: center;
+}
+
+#letters-guessed {
+  margin: 2em;
+  text-align: center;
+}

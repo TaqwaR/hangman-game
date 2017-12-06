@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito">
   <title>Document</title>
 </head>
 
@@ -14,15 +15,16 @@
   <div class="container">
 
     <header>
-      <h1>Hangman</h1>
-      <h3>Bee Themed</h3>
+      <h1>Bee Hangman</h1>
+      <img src="./assets/images/beehive.jpg" alt="beehive">
     </header>
-    <div id="underscores">_ _ _ _</div>
-    <div id="correctGuesses"></div>
-    <div id="wrongGuesses"></div>
-    <div id="guessesRemaining"></div>
-
-
+    <div id="game-box">
+      <div id="underscores"></div>
+      <div id="correct-guesses">[Wins]</div>
+      <div id="wrong-guesses">[Loses]</div>
+      <div id="guesses-remaining">[Guesses remaining] </div>
+      <div id="letters-guessed">[Letters guessed]</div>
+    </div>
   </div>
 
   <script type='text/javascript' src='./assets/javascript/game.js'></script>
