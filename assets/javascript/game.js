@@ -6,6 +6,7 @@
   var randomNum = Math.floor(Math.random() * beeWords.length);
   var randomWord = beeWords[randomNum].toUpperCase();
 
+////words and guesses
   var rightWord = [];
   var wrongWord = [];
   var underScore = []; // empty array for underscores
@@ -41,7 +42,7 @@
 //defining startGame function
   function startGame() {
 
-/////purpose: get users letter(s) guess
+/////get users letter(s) guess
 //--> event keyup function start
   document.addEventListener('keyup', (function (event) {
 
@@ -55,8 +56,14 @@
     //add to rightWord array
       rightWord.push(userKeyInput);
 
+    //I want this for loop to check for a letter reaccuring more than once
+      for (var i = 0; i < underScore.length; i++) {
+        underScore[randomWord.indexOf(userKeyInput)] = userKeyInput;
+        userKeyInput[i];
+      }
+
     //replace underscore with right letter
-      underScore[randomWord.indexOf(userKeyInput)] = userKeyInput; // place for loop around this
+      //underScore[randomWord.indexOf(userKeyInput)] = userKeyInput; // place for loop around this for to check for the same letter twice
 
     //dom manipulation
       underScoreDiv.innerHTML = underScore.join(' ');
