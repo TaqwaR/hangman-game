@@ -12,13 +12,13 @@
 /////choose word randomly
   var randomNum = Math.floor(Math.random() * beeWords.length);
   var randomWord = beeWords[randomNum].toUpperCase();
-  var guessesRemaining = 12;
+
 
 ////words and guesses
   var rightWord = [];
   var wrongWord = [];
   var underScore = []; // empty array for underscores
-  var userGuesses = 12;
+
 
 //to test randomWord var
   console.log(randomWord);
@@ -34,7 +34,7 @@
 /////Counters
   var winCounter = 0;
   var loseCounter = 0;
-  var guessRemainCounter = 11;
+  var guessRemainCounter = 10;
 
 /////create underscores based on length of random word that we generated
 // --> makeUnderscore function start
@@ -102,14 +102,15 @@ document.addEventListener('keyup', (function gameKeyup(event) {
       lettersGuessedDiv.innerHTML = wrongWord;
       document.getElementById('guesses-remaining').innerHTML = --guessRemainCounter;
 
-    //if wrongWord array input is greater than 12 create message saying no more guesses, and 'stop' function
+    //if wrongWord array input is greater than 10 create message saying no more guesses, and 'stop' function
       //**This if statement is not working**//
-      if (wrongWord.indexOf(userKeyInput) >= 11) {
+      if (wrongWord.indexOf(userKeyInput) >= 10) {
         document.getElementById('guesses-remaining').innerHTML = "No more guesses"
-        document.removeEventListener('keyup', gameKeyup);
+
         document.getElementById('game-result').innerHTML = "*STING*, YOU LOSE."
         document.getElementById('wrong-guesses').innerHTML = ++loseCounter;
         console.log('no guesses remaining');
+        document.removeEventListener('keyup', gameKeyup);
       }
       // wrongWord if statement end
     }
@@ -117,9 +118,18 @@ document.addEventListener('keyup', (function gameKeyup(event) {
 
 }));
 
-function restartGame() {
-  makeUnderscore();
-  gameKeyup(event);
+if (document.removeEventListener('keyup', gameKeyup) = true) {
+  function restartGame() {
+    return randomWord;
+    rightWord = [];
+    wrongWord = [];
+    underScore = [];
+
+    winCounter++;
+    loseCounter = 0;
+    guessRemainCounter = 10;
+
+  }
 }
 
 //--> event keyup function end
