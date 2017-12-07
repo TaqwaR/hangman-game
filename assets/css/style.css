@@ -21,11 +21,28 @@ img {
   float: left;
 }
 
+#game-result {
+  border: 2px solid black;
+  width: 20em;
+  height: 2.5em;
+  float: left;
+  margin-left: 3em;
+  margin-bottom: 1em;
+  padding-top: 1.2em;
+  text-align: center;
+  font-weight: 1000;
+  color: gold;
+}
+
 #game-box {
   border: 2px solid black;
   width: 20em;
   float: left;
   margin-left: 3em;
+}
+
+#game-box p {
+  text-align: center;
 }
 
 #underscores {
@@ -35,21 +52,21 @@ img {
 
 #correct-guesses {
   margin: 1em;
-  margin-top: 3em;
+  margin-top: 1em;
   text-align: center;
 }
 
 #wrong-guesses {
-  margin: 2em;
+  margin: 1em;
   text-align: center;
 }
 
 #guesses-remaining {
-  margin: 2em;
+  margin: 1em;
   text-align: center;
 }
 
 #letters-guessed {
-  margin: 2em;
+  margin: 1em;
   text-align: center;
 }
