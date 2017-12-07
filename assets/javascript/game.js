@@ -39,11 +39,16 @@
 /////create underscores based on length of random word that we generated
 // --> makeUnderscore function start
 
+
+
   function makeUnderscore() {
     for (var i = 0; i < randomWord.length; i++) {
       underScore.push("_");
     }
-    return underScore;
+    document.getElementById('underscores').innerHTML = underScore.join(" ");
+
+    //for testing
+    return underScore
   }
 //--> makeUnderscore function end
 
@@ -52,7 +57,7 @@
 
 /////get users letter(s) guess
 //--> event keyup function start
-  document.addEventListener('keyup', (function gameKeyup(event) {
+document.addEventListener('keyup', (function gameKeyup(event) {
 
   //converts unicode key value into a string
     var userKeyInput = String.fromCharCode(event.keyCode);
@@ -66,23 +71,21 @@
 
 
     //I want this for loop to check for a letter reaccuring more than once
+      //If userKeyInput is equal to randomWord[i] grab the index of that letter and set underScore[*at that index*] equal to userKeyInput. All this should happen inside the for loop.
       for (var i = 0; i < underScore.length; i++) {
         underScore[randomWord.indexOf(userKeyInput)] = userKeyInput;
-
-        //If userKeyInput is equal to randomWord[i] grab the index of that letter and set underScore[*at that index*] equal to userKeyInput. All this should happen inside the for loop.
 
         if (userKeyInput[i] = randomWord[i]) {
           userKeyInput[i] = underScore[underScore.indexOf(i)];
         }
-
       }
 
     //replace underscore with right letter
-      //underScore[randomWord.indexOf(userKeyInput)] = userKeyInput; // place for loop around this for to check for the same letter twice
+      //underScore[randomWord.indexOf(userKeyInput)] = userKeyInput; <--- place for loop around this for to check for the same letter twice
 
     //dom manipulation
       underScoreDiv.innerHTML = underScore.join(' ');
-      //correctGuessDiv.innerHTML = rightWord.join(''); //make this into number of wins if all letters guess correctly.
+
 
       if (underScore.join('') == randomWord) {
         document.removeEventListener('keyup', gameKeyup);
@@ -113,4 +116,10 @@
     //else statement end
 
 }));
+
+function restartGame() {
+  makeUnderscore();
+  gameKeyup(event);
+}
+
 //--> event keyup function end
