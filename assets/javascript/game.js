@@ -32,19 +32,17 @@
   var guessRemainCounter = 10;
 
 
-////retstart function
-  // function restartGame() {
-  //   rightWord = [];
-  //   wrongWord = [];
-  //   underScore = [];
-  //
-  //   winCounter++;
-  //   loseCounter = 0;
-  //   guessRemainCounter = 10;
-  //
-  //   return randomWord;
-  //
-  // }
+  document.getElementById('new-word').addEventListener("click", function restartGame() {
+      rightWord = [];
+      wrongWord = [];
+      underScore = [];
+
+      winCounter++;
+      loseCounter = 0;
+      guessRemainCounter = 10;
+
+      return makeUnderscore();
+  });
 
 
 /////create underscores based on length of random word that we generated
@@ -119,5 +117,3 @@ document.addEventListener('keyup', (function gameKeyup(event) {
     }
     //else statement end
 }));
-
-restartGame()
