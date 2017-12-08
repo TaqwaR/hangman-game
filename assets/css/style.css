@@ -18,11 +18,14 @@ h3 {
 img {
   height: 19em;
   margin-left: 18em;
+  margin-right: 3em;
+  margin-top: 8em;
   float: left;
 }
 
 #game-result {
   border: 2px solid black;
+  border-radius: 10px;
   width: 13.5em;
   margin-top: 1em;
   margin-right: 2.5em;
@@ -33,7 +36,8 @@ img {
   padding-top: 1.2em;
   text-align: center;
   font-weight: 1000;
-  color: gold;
+  color: black;
+  background-color: #fffd38;
 }
 
 #game-box {
@@ -71,4 +75,15 @@ img {
 #letters-guessed {
   margin: 1em;
   text-align: center;
+}
+
+button {
+  margin: 2em;
+  margin-left: 5em;
+  border-radius: 10px;
+  border: 2px solid black;
+  padding: 12px 30px 12px 30px;
+  background: #fffd38;
+  color: black;
+  font-size: 17px;
 }
