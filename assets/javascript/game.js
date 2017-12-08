@@ -33,17 +33,17 @@
 
 
 /////restart game function
-  document.getElementById('new-word').addEventListener("click", function restartGame() {
-      rightWord = [];
-      wrongWord = [];
-      underScore = [];
-
-      winCounter++;
-      loseCounter = 0;
-      guessRemainCounter = 10;
-
-      return makeUnderscore();
-  });
+  // document.getElementById('new-word').addEventListener("click", function restartGame() {
+  //     rightWord = [];
+  //     wrongWord = [];
+  //     underScore = [];
+  //
+  //     winCounter++;
+  //     loseCounter = 0;
+  //     guessRemainCounter = 10;
+  //
+  //     return makeUnderscore();
+  // });
 
 
 /////create underscores based on length of random word that we generated
