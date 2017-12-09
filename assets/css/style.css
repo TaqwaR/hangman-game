@@ -42,13 +42,16 @@ img {
 
 #game-box {
   border: 2px solid black;
+  border-radius: 10px;
   width: 20em;
   float: left;
   margin-left: 3em;
+  margin-bottom: 3em;
 }
 
 #game-box p {
   text-align: center;
+  font-weight: 1000;
 }
 
 #underscores {
