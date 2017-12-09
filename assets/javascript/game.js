@@ -5,8 +5,8 @@ var beeWords = [ "wings", "hive", "wax", "drone", "nectar", "queen", "wasp", "st
 var beeWordsPlus2 = ["apiary","worker", "pollination", "beyonce", "swarm", "metamorphosis", "royaljelly", "pupa", "buzz"];
 
 /////choose word randomly
-var randomNum = Math.floor(Math.random() * beeWords.length);
-var randomWord = beeWords[randomNum].toUpperCase();
+var randomNum; //= Math.floor(Math.random() * beeWords.length);
+var randomWord; //= beeWords[randomNum].toUpperCase(); //put this in a function, then refernece it in the reset
 
 ////words and guesses
 var rightWord = [];
@@ -14,7 +14,7 @@ var wrongWord = [];
 var underScore = [];
 
 //to test randomWord var
-console.log(randomWord);
+//console.log(randomWord);
 
 /////Dom manipulation
 var resultDiv = document.getElementById('game-result');
@@ -29,43 +29,32 @@ var winCounter = 0;
 var loseCounter = 0;
 var guessRemainCounter = 10;
 
-////restart game on click function
-document.getElementById('new-word').addEventListener("click", (function restartGame(event) {
-
-  rightWord = [];
-  wrongWord = [];
-  underScore = [];
-
-  loseCounter = 0;
-  guessRemainCounter = 10;
-  //gameKeyup(event); <-- cannot get this to work
-  makeUnderscore();
-
-  wrongGuessDiv.innerHTML = loseCounter;
-  guessRemainDiv.innerHTML = guessRemainCounter;
-  lettersGuessedDiv.innerHTML = wrongWord;
-  underScoreDiv.innerHTML = underScore.join(" ");
-
+//random word fucntion
+function randomWordGenerator() {
+  randomNum = Math.floor(Math.random() * beeWords.length);
+  randomWord = beeWords[randomNum].toUpperCase();
 }
 
-
-)
-
-);
-
+chooseLetter();
 
 /////create underscores based on length of random word that we generated
 function makeUnderscore() {
+
+  randomWordGenerator()
+
   for (var i = 0; i < randomWord.length; i++) {
     underScore.push("_");
   }
   document.getElementById('underscores').innerHTML = underScore.join(" ");
+
   //for testing
-  return underScore
+  return underScore // remove this and see if it works
 }
 
 // testing
 console.log(makeUnderscore());
+
+function chooseLetter() {
 
 /////get users letter(s) guess
 document.addEventListener('keyup', (function gameKeyup(event) {
@@ -78,7 +67,7 @@ document.addEventListener('keyup', (function gameKeyup(event) {
   if (randomWord.indexOf(userKeyInput) > -1) {
     rightWord.push(userKeyInput);
 
-  //checking for more than one occurence of a letter
+//checking for more than one occurence of a letter
     for (var i = 0; i < underScore.length; i++) {
       underScore[randomWord.indexOf(userKeyInput)] = userKeyInput;
       if (userKeyInput[i] = randomWord[i]) {
@@ -98,18 +87,19 @@ document.addEventListener('keyup', (function gameKeyup(event) {
       console.log('you win');
     }
 
-  // if the joint letters do NOT equal the random word
+// if the joint letters do NOT equal the random word
     } else {
 
-    //adds wrong guesses to wrongWord array
+
+//adds wrong guesses to wrongWord array
       wrongWord.push(userKeyInput);
 
-    //DOM minpulation. joins all wrong guesses together in an array and places it in the lettersGuessedDiv
+//DOM minpulation. joins all wrong guesses together in an array and places it in the lettersGuessedDiv
       lettersGuessedDiv.innerHTML = wrongWord;
       document.getElementById('guesses-remaining').innerHTML = --guessRemainCounter;
 
-    //if wrongWord array input is greater than 10 create message saying no more guesses, and 'stop' keyUp events
-      if (wrongWord.indexOf(userKeyInput) >= 10) {
+//if wrongWord array input reaches 10, create message saying no more guesses, and 'stop' keyUp events
+      if (wrongWord.indexOf(userKeyInput) == 10) {
         document.getElementById('guesses-remaining').innerHTML = "No more guesses"
         document.getElementById('game-result').innerHTML = "*STING*, YOU LOSE."
         document.getElementById('wrong-guesses').innerHTML = ++loseCounter;
@@ -118,5 +108,29 @@ document.addEventListener('keyup', (function gameKeyup(event) {
       }
 
     }
+
+}));
+
+};
+
+////restart game on click function
+document.getElementById('new-word').addEventListener("click", (function restartGame(event) {
+
+  randomWordGenerator()
+  chooseLetter()
+
+  rightWord = [];
+  wrongWord = [];
+  underScore = [];
+
+  loseCounter = 0;
+  guessRemainCounter = 10;
+  //gameKeyup();
+  makeUnderscore();
+
+  wrongGuessDiv.innerHTML = loseCounter;
+  guessRemainDiv.innerHTML = guessRemainCounter;
+  lettersGuessedDiv.innerHTML = wrongWord;
+  underScoreDiv.innerHTML = underScore.join(" ");
 
 }));
