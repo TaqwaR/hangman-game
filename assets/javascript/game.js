@@ -1,20 +1,17 @@
 
 /////create array beeWords
-var beeWords = [ "wings", "hive", "wax", "drone", "nectar", "queen", "wasp", "sting", "flower", "forage", "comb", "solitary"];
+var beeWords = [ "wings", "hive", "wax", "drone", "nectar", "wasp", "sting", "flower", "forage", "comb", "solitary"];
 
 var beeWordsPlus2 = ["apiary","worker", "pollination", "beyonce", "swarm", "metamorphosis", "royaljelly", "pupa", "buzz"];
 
 /////choose word randomly
-var randomNum; //= Math.floor(Math.random() * beeWords.length);
-var randomWord; //= beeWords[randomNum].toUpperCase(); //put this in a function, then refernece it in the reset
+var randomNum;
+var randomWord;
 
 ////words and guesses
 var rightWord = [];
 var wrongWord = [];
 var underScore = [];
-
-//to test randomWord var
-//console.log(randomWord);
 
 /////Dom manipulation
 var resultDiv = document.getElementById('game-result');
@@ -29,26 +26,27 @@ var winCounter = 0;
 var loseCounter = 0;
 var guessRemainCounter = 10;
 
-//random word fucntion
+//Group debugging session* - defining random word fucntion
 function randomWordGenerator() {
   randomNum = Math.floor(Math.random() * beeWords.length);
   randomWord = beeWords[randomNum].toUpperCase();
+  console.log(randomWord);
 }
 
+//Group debugging session* - calling chooseLetter function
 chooseLetter();
 
 /////create underscores based on length of random word that we generated
 function makeUnderscore() {
-
   randomWordGenerator()
-
   for (var i = 0; i < randomWord.length; i++) {
     underScore.push("_");
   }
+
   document.getElementById('underscores').innerHTML = underScore.join(" ");
 
   //for testing
-  return underScore // remove this and see if it works
+  //return underScore // remove this and see if it works
 }
 
 // testing
@@ -89,7 +87,6 @@ document.addEventListener('keyup', (function gameKeyup(event) {
 
 // if the joint letters do NOT equal the random word
     } else {
-
 
 //adds wrong guesses to wrongWord array
       wrongWord.push(userKeyInput);
@@ -132,5 +129,8 @@ document.getElementById('new-word').addEventListener("click", (function restartG
   guessRemainDiv.innerHTML = guessRemainCounter;
   lettersGuessedDiv.innerHTML = wrongWord;
   underScoreDiv.innerHTML = underScore.join(" ");
+  resultDiv.innerHTML = "Type a letter to begin";
+
+
 
 }));
