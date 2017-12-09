@@ -32,20 +32,6 @@
   var guessRemainCounter = 10;
 
 
-/////restart game function
-  // document.getElementById('new-word').addEventListener("click", function restartGame() {
-  //     rightWord = [];
-  //     wrongWord = [];
-  //     underScore = [];
-  //
-  //     winCounter++;
-  //     loseCounter = 0;
-  //     guessRemainCounter = 10;
-  //
-  //     return makeUnderscore();
-  // });
-
-
 /////create underscores based on length of random word that we generated
   function makeUnderscore() {
     for (var i = 0; i < randomWord.length; i++) {
@@ -85,8 +71,6 @@
     //DOM manipulation - joining each generated underscore/typed letter with a space between them.
       underScoreDiv.innerHTML = underScore.join(' ');
 
-
-
     //If the letters typed in the underscore spaces jointly equal the random word, stop keyUp events and display the following
       if (underScore.join('') == randomWord) {
         document.removeEventListener('keyup', gameKeyup);
@@ -118,3 +102,18 @@
     }
 
 }));
+
+/////restart game function
+  // document.getElementById('new-word').addEventListener("click", function restartGame() {
+  //     makeUnderscore();
+  //     rightWord = [];
+  //     wrongWord = [];
+  //     underScore = [];
+  //
+  //     // winCounter++;
+  //     loseCounter = 0;
+  //     guessRemainCounter = 10;
+  //
+  // });
+  //
+  // restartGame("click");
